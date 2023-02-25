@@ -1,0 +1,122 @@
+:root{
+    -md-dark-color:black;
+    --dark-color:black
+
+}
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    width: 100%;
+    display: block;
+}
+
+li{
+    list-style: none;
+}
+
+.containers{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    height: 90vh;
+   justify-content: space-evenly;
+    
+}
+
+.left-side-container{
+    height: 100%;
+    border:1px solid black;
+    width: 30%;
+}
+
+.image-wrapper{
+    height: auto;
+    width: auto;
+    border: 1px solid black;
+}
+
+.image-wrapper img{
+    height: 200px;
+    width: 200px;
+}
+
+.right-side-container{
+    display: inline;
+    height: fit-content;
+    border:1px solid black;
+    width: 60%;
+}
+
+.name{
+    font-size: 3ch;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+.description{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+/* Movies List */
+.movies-list{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+.movies-heading{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.movies-list-ul{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+/*Comics List*/
+.comics-list{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+.comics-heading{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.comics-list-ul{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+/*Stories List*/
+
+.stories-list{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+.stories-heading{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.stories-list-ul{
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+
+
+
+
+

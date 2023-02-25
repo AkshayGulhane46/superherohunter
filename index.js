@@ -1,85 +1,113 @@
-let FavSuperheros = [];
-let list = document.getElementById("home-superhero-list");
+const charSearchBox = document.getElementById('char-search-box');
+const searchList = document.getElementById('search-list');
+const resultGrid = document.getElementById('result-grid');
 
-// function to call api 
-function getSuperHeroOnHomePage(){
-    const url = 'http://gateway.marvel.com/v1/public/characters?ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc'
-    fetch(url).
-    then(function(response){
-        console.log(response);
-        return response.json(); // .json will return a promis 
-    }).then(function(data){
-        for(let i = 0 ; i < data.data.results.length ; i++){
-            let li = document.createElement("li"); 
-            li.className=data.data.results[i].name;
-            li.innerHTML = data.data.results[i].name;
-            list.appendChild(li);
-        }
-    })
-    .catch(function(error){
-        console.log('error',error);
-    })
-}
-getSuperHeroOnHomePage();
+var searchTerm;
 
+// load characters from API
 
-function searchSuperHeroOnHomePage(){
-    let searchList = document.getElementById("home-superhero-search-list");
-    let query = document.getElementById("superhero-search-box").value;
-
-    const url = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith='+query+'&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc'
-    fetch(url).
-    then(function(response){
-        console.log(response);
-        return response.json(); // .json will return a promis 
-    }).then(function(data){
-        for(let i = 0 ; i < data.data.results.length ; i++){
-            let uniqueID = data.data.results[i].id;
-            let li = document.createElement("li"); 
-            let link = document.createElement("a");
-            let favLink = document.createElement("button");
-
-            link.className = data.data.results[i].name;
-            link.innerHTML = data.data.results[i].name;
-            link.href="file:///C:/SkillTests/superherohunter/superHeroDetail.html?"+uniqueID;
-            link.target = "_blank";
-
-            favLink.className = "like";
-            favLink.innerHTML ="Like";
-          
-            li.className=data.data.results[i].name;
-
-            li.appendChild(favLink);
-            li.appendChild(link);
-            searchList.appendChild(li);
-
-            var likeBtns = document.getElementsByClassName("like"); // count the number of delete buttons on page
-            var j;
-            let value = "";
-            likeBtns[i].addEventListener("click", function() { // make each delete button as different 
-            value = likeBtns[i].parentElement.className;
-
-            FavSuperheros.push(value); // value is taken from each delete button as className of parent 
-            if (localStorage.getItem(value) === null) {
-                console.log("New Added");
-                localStorage.setItem(value,"SuperHero");
-            }else{
-                console.log("Already Liked");
-            }
-            });
-        }
-    })
-    .catch(function(error){
-        console.log('error',error);
-    })
+async function loadChars(query){
+    const URL = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`
+    const response = await fetch(`${URL}`);
+    const data = await response.json();
+    console.log(data.data.results);
+    displayCharList(data.data.results);
 }
 
+function findChars(){
+    let searchTerm = (charSearchBox.value).trim();
+    if(searchTerm.length > 0){
+        searchList.classList.remove('hide-search-list');
+        loadChars(searchTerm);
+    }else{
+        searchList.classList.add('hide-search-list');
+    }
+    console.log(searchTerm);
+}
+
+function displayCharList(chars){
+    console.log("inside display char")
+    searchList.innerHTML = "";
+    for(let idx = 0 ; idx < chars.length ; idx++){
+
+        // create a URL for each of the search Results 
+
+        let redirectLink = document.createElement('a');
+        let charListItem = document.createElement('div');
+        redirectLink.innerHTML = "Link";
+        redirectLink.href = "details/charDetails.html?character=" + chars[idx].id;
+
+        charListItem.dataset.id = chars[idx].id;
+        charListItem.className='search-list-item';
+        charListItem.innerHTML = `
+        <div class="search-item-thumbnail">
+            <img src="">
+        </div>
+        <div class="search-item-info"> 
+            
+            <a href = ${ "details/charDetails.html?character=" + chars[idx].id }> <h3>${chars[idx].name}</h3> </a>
+            <p>203</p>
+            <button onClick="addtoFavs()"> Like </button>
+           
+        </div>`;
+
+    
+        searchList.append(charListItem);
+    }
+    loadCharDetails();
+}
+
+
+function loadCharDetails(){
+
+    const searchConstList = searchList.querySelectorAll('.search-list-item');
+   
+    searchConstList.forEach(character =>{
   
+        console.log(character);
+        character.addEventListener('click' ,async()=>{
+           // console.log("inside load char Details");
+            //console.log(character.dataset.id);
 
-console.log(FavSuperheros);
+            searchConstList.className = ('hide-search-list');
+            charSearchBox.value = "";
+            const result = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${character.dataset.id}?ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`)
+            const charDetails = await result.json();
+            console.log(charDetails);
+            addtoFavs(charDetails);
+        })
+    })
+}
 
 
+window.addEventListener('click', (event) => {
+    if(event.target.className != "form-control"){
+        searchList.className = 'hide-search-list';
+    }
+});
 
 
+// add a hero to favourites
+function addtoFavs(charDetails){
+  let id = charDetails.data.results[0].id;
+  let favs = getFavs();
+  if(!favs.includes(id)){
+    favs.push(id);
+  }
+  localStorage.setItem('favHeros', JSON.stringify(favs));
+//   e.target.innerHTML = 'Remove from favourites';
+//   e.target.removeEventListener('click', addToFavourites);
+//   e.target.addEventListener('click', removeFromFavourites);
+}
 
-
+// retrieve a list of favourite hero id's from local storage
+function getFavs(){
+  let favs;
+  if(localStorage.getItem('favHeros') === null){
+    favs = [];
+  }
+  else{
+    favs = JSON.parse(localStorage.getItem('favHeros'));
+  }
+  return favs; 
+}
