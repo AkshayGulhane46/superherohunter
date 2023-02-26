@@ -5,61 +5,38 @@
     </head>
     <body>
         <div class="wrapper"> 
-            <div class="logo">
-                <button> <a href = "likedHeros/likedHeros.html">Favourites</a> </button>
-                <div class="container"> 
-                    <p> superHero Finder </p>
+            <div id="logo">
+                <div id="containers"> 
+                    <p id = "heading"> superHero Finder</p>
                 </div>
+         
             </div>
             <div class="search-container">
                 <div class="search-element">
-                    <h3> Search Character </h3>
-                    <input type="text" class="form-control" placeholder="Search char" id="char-search-box"
+                    <input type="text" class="form-control" placeholder="search Supehero.." id="char-search-box"
                     onkeyup="findChars()">
                     <div class="search-list" id="search-list">
-                       <!--<div class="search-list-item">
-                            <div class="search-item-thumbnail">
-                                <img src="./assets/sample.jpg">
-                               
-                            </div>
-                       
-                        <div class="search-item-info"> 
-                            <h3>Iron Man</h3>
-                            <p>203</p>
-                        </div>
-                        </div>  --> 
-                        <!-- End of search List -->
                     </div>
                     <!-- End of search element-->
+                </div>
+                <div>
+                <a id= "fav-link" href = "likedHeros/likedHeros.html"><button id="fav-buttton"> Favourites </button> </a> 
                 </div>
                 <!-- End of search container-->
             </div>
             <div class="container">
                 <div class="result-container">
                     <div class="result-grid" id="result-grid">
-                        <!-- char information here
-                        <div class="char-image">
-                            <img src="./assets/sample.jpg" alt="chars">
-                        </div>
-                        <div class="char-info">
-                            <h3 class="char-title"> Iron Man</h3>
-                            <ul class="char-misc-info">
-                                <li class="year">year</li>
-                                <li class="rated"> 15+ </li>
-                                <li class="released">19999 </li>
-                            </ul>
-                   
-                    <p class="genere"> Action </p>
-                    <p class="writer"> akshay gulfjdsalkfjsa</p>
-                    <p class="actors"> abc  sdfsflkds;f sdfsj; sadlfkj</p>
-                    <p class="plot"> plot is this </p>
-                    <p class="language"> English hindi </p>
-                    <p class="Awards"> awards awards awards </p>
-               
-                    </div>
-                 -->
                 </div>
             </div>
+            <div id="home-container">
+                <div id="home-list">
+                    <ul id="home-list-ul">
+                        UL
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </body>
     <script src="index.js"></script>

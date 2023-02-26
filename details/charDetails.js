@@ -22,7 +22,46 @@ async function loadCharsOutput(query){
 }
 
 function displayCharDetailsUpdate(data){
-    const result = document.getElementById('Output');
-    result.innerHTML = data[0].name;
+
+    const name = document.getElementById('name')
+    name.innerHTML = data[0].name;
+
+    const description = document.getElementById('description')
+    description.innerHTML = data[0].description;
+
+    const comicsList = document.getElementById('comics-list-ul');
+    for(let i = 0 ; i < data[0].comics.items.length ; i++){
+        const comicName = data[0].comics.items[i].name;
+        let comicListElement = document.createElement('li');
+        comicListElement.className = 'comic';
+        comicListElement.innerHTML = comicName;
+        comicsList.append(comicListElement);
+    }
+
+    const seriesList = document.getElementById('series-list-ul');
+    for(let i = 0 ; i < data[0].series.items.length ; i++){
+        const seriescName = data[0].series.items[i].name;
+        let seriesListElement = document.createElement('li');
+        seriesListElement.className = 'series';
+        seriesListElement.innerHTML =seriescName;
+        seriesList.append(seriesListElement);
+    }
+
+    const storiesList = document.getElementById('stories-list-ul');
+    for(let i = 0 ; i < data[0].stories.items.length ; i++){
+        const storiesName = data[0].stories.items[i].name;
+        let storiesListElement = document.createElement('li');
+        storiesListElement.className = 'stories';
+        storiesListElement.innerHTML =storiesName;
+        storiesList.append(storiesListElement);
+    }
+
+    const heroImage =document.getElementById('image-wrapper');
+    const image = document.createElement('img');
+    image.src = data[0].thumbnail.path+"."+data[0].thumbnail.extension;
+    heroImage.appendChild(image);
+
+
+
 }
 loadCharsOutput()

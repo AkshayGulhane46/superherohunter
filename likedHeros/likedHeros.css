@@ -13,6 +13,7 @@ body{
     box-sizing: border-box;
 }
 
+
 a{
     text-decoration: none;
 }
@@ -26,7 +27,20 @@ li{
     list-style: none;
 }
 
-.container{
+#containers{
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
+#heading{
+    font-size: 4pc;
+}
+
+#container{
     position: relative;
     display: flex;
     height: 100%;
@@ -34,21 +48,36 @@ li{
     justify-content: center;
 }
 
-.fav-list{
+#fav-list{
     display: flex;
     flex-wrap: wrap;
     height: max-content;
-    width: 90%;
+    width: 80%;
+    justify-content: center;
+    margin: auto;
 }
 
-.fav-list-ul{
+#fav-list-ul{
     display: flex;
     flex-wrap: wrap;
     border: 1px solid black;
     justify-content: center;
+    align-content: stretch;
+    flex-direction: row;
 }
 
-.single-hero{
+#fav-list-li{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#single-hero{
     display: flex;
     border: 1px solid black;
     justify-content: space-between;
@@ -58,31 +87,36 @@ li{
     
 }
 
-.hero-info{
+#hero-info{
     display: block;
+    width: min-content;
 }
-.top{
-    height: max-content;
-    width: max-content;
+#top{
+    height: 100px;
+    width: 100px;
 }
-.top img{
+#top img{
     position: relative;
     height: 100px;
     width: 100px;
     border: 1px solid black;
 }
 
-.bottom{
+#bottom{
     margin-top: 10px;
     display: block;
     text-align: -webkit-center;
 }
-.hero-name{
+#hero-name{
     font-size: smaller;
+    overflow: hidden;
     margin-bottom: 10px;
+    word-wrap: break-word;
+
 }
-.bottom button{
+button{
     height: 25px;
     margin: 10px;
-    width: 50px;
+    width: 80px;
+
 }

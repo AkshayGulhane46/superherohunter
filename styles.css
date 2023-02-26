@@ -23,9 +23,61 @@ img{
     display: block;
 }
 
+#containers{
+    display: flex;
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-container button{
+    height: auto;
+    width: 12rem;
+    font-size: 2rem;
+}
+#heading{
+    font-size: 4pc;
+}
+
+#fav-buttton{
+    height: 3pc;
+    position: relative;
+    width: 10pc;
+    background: white;
+    font-size: 1pc;
+    color: black;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 5px 5px #9c27b0;
+    font-size: 20px;
+}
+
+
+
+#fav-buttton:hover{
+    height: 3pc;
+    position: relative;
+    width: 10pc;
+    background: rgb(19, 19, 19);
+    font-size: 1pc;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    border: none;
+    box-shadow: 5px 5px #ffffff;
+    font-size: 20px;
+}
+
+
 .wrapper{
     min-height: 100vh;
-    background-color: black;
 }
 
 .wrapper .container{
@@ -35,11 +87,12 @@ img{
 }
 
 .search-container{
-    background-color: blue;
+    background-color: #f44336;
     height: 180px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .logo{
@@ -74,9 +127,9 @@ img{
     padding: 1rem 2rem;
     font-size: 1.4rem;
     border: none;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    outline:none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    outline: none;
     color: black;
     width: 350px;
 }
@@ -110,7 +163,7 @@ img{
 }
 
 .search-item-thumbnail img{
-    width: 40px;
+    width: 80px;
     margin-right: 1rem;
 }
 
@@ -172,4 +225,9 @@ img{
 .char-title{
     font-size: 2rem;
     color: white;
+}
+
+button{
+    height: 30px;
+    width: 60px;
 }

@@ -5,6 +5,8 @@
 }
 body{
     font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color: grey;
 }
 
 *{
@@ -26,7 +28,7 @@ li{
     list-style: none;
 }
 
-.containers{
+#containers{
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -35,86 +37,116 @@ li{
     
 }
 
-.left-side-container{
+#left-side-container{
     height: 100%;
-    border:1px solid black;
+    
     width: 30%;
 }
 
-.image-wrapper{
+#image-wrapper{
     height: auto;
     width: auto;
-    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
-.image-wrapper img{
-    height: 200px;
-    width: 200px;
+#image-wrapper img{
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
-
-.right-side-container{
+#right-side-container{
     display: inline;
     height: fit-content;
-    border:1px solid black;
+   
     width: 60%;
 }
 
-.name{
+#name{
     font-size: 3ch;
     font-weight: bold;
     margin-bottom: 15px;
-    border: 1px solid black;
+ 
 }
-.description{
+#description{
     margin-bottom: 15px;
-    border: 1px solid black;
+  
 }
 /* Movies List */
-.movies-list{
+#movies-list{
     margin-bottom: 15px;
-    border: 1px solid black;
+  
 }
 
-.movies-heading{
+#movies-heading{
     margin-bottom: 5px;
+    font-size: 2ch;
     font-weight: bold;
-}
-.movies-list-ul{
     margin-bottom: 15px;
-    border: 1px solid black;
+
+}
+#movies-list-ul{
+    margin-bottom: 15px;
+
 }
 
 /*Comics List*/
-.comics-list{
+#comics-list{
     margin-bottom: 15px;
-    border: 1px solid black;
+
 }
 
-.comics-heading{
+#comics-heading{
     margin-bottom: 5px;
+    font-size: 2ch;
     font-weight: bold;
-}
-.comics-list-ul{
     margin-bottom: 15px;
-    border: 1px solid black;
+   
+}
+#comics-list-ul{
+    margin-bottom: 15px;
+  
 }
 
 /*Stories List*/
 
-.stories-list{
+#stories-list{
     margin-bottom: 15px;
-    border: 1px solid black;
+  
 }
 
-.stories-heading{
+#stories-heading{
     margin-bottom: 5px;
+    font-size: 2ch;
     font-weight: bold;
-}
-.stories-list-ul{
     margin-bottom: 15px;
-    border: 1px solid black;
+  
+}
+#stories-list-ul{
+    margin-bottom: 15px;
+ 
 }
 
+
+/*series list */
+#series-list{
+    margin-bottom: 15px;
+  
+}
+
+#series-heading{
+    margin-bottom: 5px;
+    font-size: 2ch;
+    font-weight: bold;
+    margin-bottom: 15px;
+    
+}
+#series-list-ul{
+    margin-bottom: 15px;
+  
+}
 
 
 

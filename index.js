@@ -41,12 +41,12 @@ function displayCharList(chars){
         charListItem.className='search-list-item';
         charListItem.innerHTML = `
         <div class="search-item-thumbnail">
-            <img src="">
+            <img src="${chars[idx].thumbnail.path + "." + chars[idx].thumbnail.extension}">
         </div>
         <div class="search-item-info"> 
             
             <a href = ${ "details/charDetails.html?character=" + chars[idx].id }> <h3>${chars[idx].name}</h3> </a>
-            <p>203</p>
+         
             <button onClick="addtoFavs()"> Like </button>
            
         </div>`;
@@ -59,16 +59,12 @@ function displayCharList(chars){
 
 
 function loadCharDetails(){
-
     const searchConstList = searchList.querySelectorAll('.search-list-item');
-   
     searchConstList.forEach(character =>{
-  
         console.log(character);
         character.addEventListener('click' ,async()=>{
            // console.log("inside load char Details");
             //console.log(character.dataset.id);
-
             searchConstList.className = ('hide-search-list');
             charSearchBox.value = "";
             const result = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${character.dataset.id}?ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`)
@@ -83,6 +79,8 @@ function loadCharDetails(){
 window.addEventListener('click', (event) => {
     if(event.target.className != "form-control"){
         searchList.className = 'hide-search-list';
+    }else{
+        searchList.className = 'search-list';
     }
 });
 
@@ -95,6 +93,7 @@ function addtoFavs(charDetails){
     favs.push(id);
   }
   localStorage.setItem('favHeros', JSON.stringify(favs));
+    console.log(charDetails);
 //   e.target.innerHTML = 'Remove from favourites';
 //   e.target.removeEventListener('click', addToFavourites);
 //   e.target.addEventListener('click', removeFromFavourites);
@@ -111,3 +110,20 @@ function getFavs(){
   }
   return favs; 
 }
+
+// HomePage Hero Load 
+
+async function homeLoadHeros(query){
+    const URL = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`
+    const response = await fetch(`${URL}`);
+    const data = await response.json();
+    console.log(data.data.results);
+    displayLoadHeros(data.data.results);
+}
+
+function displayLoadHeros(data){
+
+}
+
+
+homeLoadHeros();
