@@ -29,6 +29,11 @@ li{
     list-style: none;
 }
 
+.empty-list{
+    font-size: 1rem;
+    color: red;
+}
+
 #containers{
     height: auto;
     width: auto;
@@ -53,6 +58,7 @@ a:visited {
    
     justify-content: center;
 }
+/*Fav list container*/
 
 #fav-list{
     display: flex;
@@ -98,6 +104,7 @@ a:visited {
     display: block;
     width: min-content;
 }
+
 #top{
     height: 100px;
     width: 100px;
@@ -108,7 +115,7 @@ a:visited {
     width: 100px;
     border: 1px solid black;
 }
-
+/*Fav list names and */
 #bottom{
     margin-top: 10px;
     display: block;
