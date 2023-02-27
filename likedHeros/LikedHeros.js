@@ -6,10 +6,6 @@ let favListName = document.getElementById('fav-list-ul');
 function showFavList() {
 for(let i = 0 ; i < favHeros.length ; i++)
     {
-
-
-
-    
         name.innerHTML = favHeros[i];
 
         showDetails(favHeros[i]);

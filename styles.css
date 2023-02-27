@@ -209,9 +209,9 @@ img{
     display: none;
 }
 
-/*Movie Result*/
+/*custor Result*/
 .result-container{
-    padding: 3rem 0;
+  
 }
 
 .char-poster img{
@@ -227,7 +227,7 @@ img{
     padding-top: 3rem;
 }
 
-/*Movie info stylings*/
+/*Hero info stylings*/
 
 .char-title{
     font-size: 2rem;
