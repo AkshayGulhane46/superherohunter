@@ -4,7 +4,7 @@ const resultGrid = document.getElementById('result-grid');
 
 // load characters from API
 async function loadChars(query){
-    const URL = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`
+    const URL = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`
     const response = await fetch(`${URL}`);
     const data = await response.json();
     console.log(data.data.results);
