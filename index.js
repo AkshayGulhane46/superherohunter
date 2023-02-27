@@ -44,11 +44,9 @@ function displayCharList(chars){
             <img src="${chars[idx].thumbnail.path + "." + chars[idx].thumbnail.extension}">
         </div>
         <div class="search-item-info"> 
-            
             <a href = ${ "details/charDetails.html?character=" + chars[idx].id }> <h3>${chars[idx].name}</h3> </a>
-         
             <button onClick="addtoFavs()"> Like </button>
-           
+
         </div>`;
 
     
@@ -75,12 +73,16 @@ function loadCharDetails(){
     })
 }
 
+let container = document.getElementById('home-container');
 
 window.addEventListener('click', (event) => {
     if(event.target.className != "form-control"){
         searchList.className = 'hide-search-list';
+        container.className = '';
     }else{
         searchList.className = 'search-list';
+        container.className = 'blur';
+
     }
 });
 
@@ -114,14 +116,37 @@ function getFavs(){
 // HomePage Hero Load 
 
 async function homeLoadHeros(query){
-    const URL = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`
+    const URL = 'https://gateway.marvel.com:443/v1/public/characters?ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc';
     const response = await fetch(`${URL}`);
     const data = await response.json();
     console.log(data.data.results);
     displayLoadHeros(data.data.results);
 }
-
+let HomeListName = document.getElementById('home-list-ul');
 function displayLoadHeros(data){
+
+    for(let i = 0 ; i < data.length ; i++)
+    {
+    console.log(data[i].name);
+    //console.log("inside loadHeros")
+    let charListItem = document.createElement('div');
+    charListItem.dataset.id = data[0].id;
+    charListItem.id = 'home-list-li';
+    charListItem.innerHTML = 
+    `<li id="home-single-hero">
+      <div id="home-hero-info">
+        <div id="home-top">
+            <img src="${data[i].thumbnail.path + "." + data[i].thumbnail.extension }"></img>
+        </div>
+        <div id="bottom">
+            <p id="home-hero-name"> ${ data[i].name }</p>
+  
+        </div>
+      </div>
+    </li>`
+    HomeListName.appendChild(charListItem)
+    }
+
 
 }
 
