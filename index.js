@@ -7,7 +7,6 @@ async function loadChars(query){
     const URL = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc`
     const response = await fetch(`${URL}`);
     const data = await response.json();
-    console.log(data.data.results);
     displayCharList(data.data.results);
 }
 // function to show and hide the search list if user types something
@@ -19,11 +18,10 @@ function findChars(){
     }else{
         searchList.classList.add('hide-search-list');
     }
-    console.log(searchTerm);
 }
 // Function to display the list of Hero characters 
 function displayCharList(chars){
-    console.log("inside display char")
+   // console.log("inside display char")
     searchList.innerHTML = "";
     for(let idx = 0 ; idx < chars.length ; idx++){
 
@@ -56,7 +54,6 @@ function displayCharList(chars){
 function loadCharDetails(){
     const searchConstList = searchList.querySelectorAll('.search-list-item');
     searchConstList.forEach(character =>{
-        console.log(character);
         character.addEventListener('click' ,async()=>{
             searchConstList.className = ('hide-search-list');
             charSearchBox.value = "";
@@ -89,7 +86,6 @@ function addtoFavs(charDetails){
     favs.push(id);
   }
   localStorage.setItem('favHeros', JSON.stringify(favs));
-   // console.log(charDetails);
 }
 
 // retrieve a list of favourite hero id's from local storage
@@ -110,7 +106,6 @@ async function homeLoadHeros(query){
     const URL = 'https://gateway.marvel.com:443/v1/public/characters?ts=20230223&apikey=6975c12f0f2ae6702c6d26349ef557fc&hash=0fb6598929d1b35a0704e51b09eaacdc';
     const response = await fetch(`${URL}`);
     const data = await response.json();
-  //  console.log(data.data.results);
     displayLoadHeros(data.data.results);
 }
 let HomeListName = document.getElementById('home-list-ul');

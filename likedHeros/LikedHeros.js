@@ -83,9 +83,6 @@ async function removeFromFavourites(e){
     location.reload(); // Reload to show the updated list to user 
 }
 
-
-
-
 showFavList();
 
 
